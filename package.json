@@ -1,0 +1,27 @@
+{
+  "name": "botproject",
+  "version": "0.1.0",
+  "description": "Botproject js on MS Azure",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vagabondan/botproject.js.git"
+  },
+  "keywords": [
+    "bot",
+    "azure"
+  ],
+  "author": "Vagabondan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vagabondan/botproject.js/issues"
+  },
+  "homepage": "https://github.com/vagabondan/botproject.js#readme",
+  "dependencies": {
+    "botbuilder": "^3.14.1",
+    "restify": "^7.1.0"
+  }
+}
