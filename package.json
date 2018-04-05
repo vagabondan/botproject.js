@@ -1,28 +1,25 @@
 {
-  "name": "botproject",
+  "name": "handoffbot",
   "version": "0.1.0",
-  "description": "Botproject js on MS Azure",
+  "license": "MIT",
+  "description": "Create example to escalate to a human",
   "main": "app.js",
   "scripts": {
+    "postinstall": "tsc",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "nodewatch": "nodemon dist/app.js",
+    "start": "node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vagabondan/botproject.js.git"
-  },
-  "keywords": [
-    "bot",
-    "azure"
-  ],
-  "author": "Vagabondan",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vagabondan/botproject.js/issues"
-  },
-  "homepage": "https://github.com/vagabondan/botproject.js#readme",
   "dependencies": {
-    "botbuilder": "^3.14.1",
-    "botbuilder-azure": "^3.0.4",
-    "restify": "^7.1.0"
+    "botbuilder": "^3.7.0",
+    "express": "^4.14.0",
+    "typescript": "^2.1.4"
+  },
+  "devDependencies": {
+    "@types/express": "^4.0.34",
+    "@types/node": "^6.0.59",
+    "nodemon": "^1.11.0"
   }
 }
