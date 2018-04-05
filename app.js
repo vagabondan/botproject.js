@@ -24,13 +24,13 @@ const tableName = 'botdata';
 const azureTableClient = new botbuilder_azure.AzureTableClient(tableName, process.env['AzureWebJobsStorage']);
 const tableStorage = new botbuilder_azure.AzureBotStorage({ gzipData: false }, azureTableClient);
 
-//const inMemoryStorage = new builder.MemoryBotStorage();
+const inMemoryStorage = new builder.MemoryBotStorage();
 
 // This is a dinner reservation bot that uses a waterfall technique to prompt users for input.
 const bot = new builder.UniversalBot(connector, [
   function (session) {
-    session.send("Welcome to the dinner reservation.");
-    session.beginDialog('askForDateTime');
+    session.send("Здравствуйте! Приветствуем вас в чате МТС помощника!");
+    session.beginDialog('chooseProblemOrFeedback');
   },
   function (session, results) {
     session.dialogData.reservationDate = builder.EntityRecognizer.resolveTime([results.response]);
@@ -47,8 +47,20 @@ const bot = new builder.UniversalBot(connector, [
     session.send(`Reservation confirmed. Reservation details: <br/>Date/Time: ${session.dialogData.reservationDate} <br/>Party size: ${session.dialogData.partySize} <br/>Reservation name: ${session.dialogData.reservationName}`);
     session.endDialog();
   }
-]).set('storage', tableStorage);
-//set('storage', inMemoryStorage); // Register in-memory storage
+])//.set('storage', tableStorage);
+  .set('storage', inMemoryStorage); // Register in-memory storage
+
+
+// Choose problem or feedback
+bot.dialog('chooseProblemOrFeedback', [
+  function (session) {
+    builder.Prompts.choice(session, "Желаете ли вы...", ["оставить отзыв","обратиться в поддержку"], { listStyle: builder.ListStyle.button });
+  },
+  function (session, results) {
+    session.endDialogWithResult(results);
+  }
+]);
+
 
 // Dialog to ask for a date and time
 bot.dialog('askForDateTime', [
