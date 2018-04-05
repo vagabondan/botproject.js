@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as builder from 'botbuilder';
 import { Handoff } from './handoff';
 import { commandsMiddleware } from './commands';
+import debug from 'debug';
 
 //=========================================================
 // Bot Setup
@@ -15,8 +16,9 @@ app.listen(process.env.port || process.env.PORT || 3978, '::', () => {
 });
 // Create chat bot
 const connector = new builder.ChatConnector({
-    appId: process.env.MICROSOFT_APP_ID,
-    appPassword: process.env.MICROSOFT_APP_PASSWORD
+    appId: process.env.MicrosoftAppId,
+    appPassword: process.env.MicrosoftAppPassword,
+    openIdMetadata: process.env.BotOpenIdMetadata
 });
 
 const bot = new builder.UniversalBot(connector, [
