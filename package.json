@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "license": "MIT",
   "description": "Create example to escalate to a human",
-  "main": "app.js",
+  "main": "dist/app.js",
+  "engines":{"node": "8.9.3"},
   "scripts": {
     "postinstall": "tsc",
     "build": "tsc",
